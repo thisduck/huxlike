@@ -7,6 +7,7 @@ Ti.include('globe.js');
 
 // initialize the database
 globe.db.initDb();
+globe.articles.downloadAll();
 
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();

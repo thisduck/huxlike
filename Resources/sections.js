@@ -41,7 +41,7 @@ var tableview = Ti.UI.createTableView({
 tableview.addEventListener('click', function(e) {
   Ti.API.info(e);
   var news_win = Ti.UI.createWindow({
-//    url:'stories_view.js',
+    url:'article_list.js',
     title:e.rowData.name,
     section: sections[e.index].url
   });
