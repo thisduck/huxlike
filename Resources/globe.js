@@ -168,7 +168,7 @@ globe.articles = {
 
 
     var image = "";
-    if (article.image64 != "" && online) {
+    if (article.images.iphone_image != undefined && article.image64 != "" && online) {
       image = '<div style="font-family:Georgia; padding: 5px"> <img src="' + article.images.iphone_image.url + '" /> </div>';
     }
     return '<html>' +
@@ -183,7 +183,7 @@ globe.articles = {
            line +
            author +
            image +
-           '<div style="font-family:Verdana; padding: 15px; text-align: left;">' + article.full_text  + '</div>' +
+           '<div style="font-family:Verdana; padding: 5px; text-align: left;">' + article.full_text  + '</div>' +
            '</body></html>';
   },
   tableRow: function(article) {

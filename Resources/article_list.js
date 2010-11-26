@@ -9,22 +9,19 @@ win.orientationModes = [
 Ti.include('config.js');
 Ti.include('library.js');
 Ti.include('globe.js');
+Ti.include('header.js');
 
 var articles = globe.articles.forSection(win.section);
 var webview = Ti.UI.createWebView({
+  top: 21
 });
 
 var len = articles.length;
 
 var data = [];
 
-var section = Ti.UI.createTableViewSection();
-section.headerView = win.tableHeaderView || Ti.UI.createView();
-
-data[0] = section;
-
-for (var i = 1; i < articles.length + 1; ++i) {
-  var article = articles[i - 1];
+for (var i = 0; i < articles.length; ++i) {
+  var article = articles[i];
   data[i] = globe.articles.tableRow(article);
 }
 
@@ -32,6 +29,7 @@ Ti.API.info("Done loading " + data.length);
 
 var tableview = Ti.UI.createTableView({
   backgroundColor:'white',
+  top: 21,
   data: data
 });
 
@@ -56,6 +54,7 @@ tableview.addEventListener('click', function(e) {
 
   webview.html = globe.articles.html(article);
 
+  w.add(winHeader);
   w.add(webview);
   w.barColor = 'black';
   win.tab.open(w);

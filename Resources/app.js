@@ -9,8 +9,39 @@ Ti.include('globe.js');
 globe.db.initDb();
 globe.articles.downloadAll();
 
+setInterval(function() {
+  globe.articles.downloadAll();
+}, 1000 * 60 * 5);
+
 // create tab group
-var tabGroup = Titanium.UI.createTabGroup();
+var tabGroup = Titanium.UI.createTabGroup({
+  barColor:'#336699'
+});
+
+
+var headerView = Ti.UI.createView({
+  top: 0,
+  height: 21,
+  backgroundColor: '#fff'
+});
+
+var headerLine = Ti.UI.createView({
+  top: 20,
+  height: 1,
+  backgroundColor: '#000'
+});
+
+var headerImage = Ti.UI.createImageView({
+  top: 0,
+  left: 0,
+  height: 20,
+  width: 184,
+  image: 'header.png',
+  backgroundColor: '#fff'
+});
+
+headerView.add(headerImage);
+headerView.add(headerLine);
 
 //
 // create base UI tab and root window
@@ -20,6 +51,7 @@ var win1 = Titanium.UI.createWindow({
     url:'sections.js',
     backgroundColor:'#fff'
 });
+win1.header = headerView;
 var tab1 = Titanium.UI.createTab({  
     icon:'KS_nav_views.png',
     title:'Sections',
